@@ -2,6 +2,7 @@ const vegetarian = document.getElementById('vegetarian')
 const vegan = document.getElementById('vegan')
 
 fetch('../data/Database.json')
+fetch('../data/database.json')
     .then(response => response.json())
     .then(data => {
         data.vegetarian.slice(0, 50).forEach(ingredientes => {
