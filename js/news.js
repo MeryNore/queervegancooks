@@ -2,7 +2,7 @@ const vegetarian = document.getElementById('vegetarian');
 const vegan = document.getElementById('vegan');
 
 const baseUrl = window.location.origin.includes('github.io')
-  ? `${window.location.origin}/merynore-pruebas`
+  ? `${window.location.origin}/queervegancooks`
   : window.location.origin;
 
   
