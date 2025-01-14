@@ -103,20 +103,24 @@
                   <label for="comensales">Nº COMENSALES</label>
                   <input type="number" id="comensales" min="1">
                 </li>
-                <li class="casilla extras">
+                <li>
                   <label>EXTRAS</label>
-                  <div>
-                    <label><input type="checkbox" class="extras" value="50"> Natural Drinks - 50€</label>
-                  </div>
-                  <div>
-                    <label><input type="checkbox" class="extras" value="150"> Kombuchas - 150€</label>
-                  </div>
-                  <div>
-                    <label><input type="checkbox" class="extras" value="100"> Tabla Quesos Veganos - 100€</label>
-                  </div>
-                  <div>
-                    <label><input type="checkbox" class="extras" value="30"> Fruta - 30€</label>
-                  </div>
+                    <div>
+                      <input type="checkbox" class="extras" value="50" id="naturaldrinks">
+                      <label for="naturaldrinks">Natural Drinks - 50€</label>
+                    </div>
+                    <div>
+                      <input type="checkbox" class="extras" value="150" id="kombuchas">
+                      <label for="kombuchas">Kombuchas - 150€</label>
+                    </div>
+                    <div>
+                      <input type="checkbox" class="extras" value="100" id="quesos">
+                      <label for="quesos">Tabla Quesos Veganos - 100€</label>
+                    </div>
+                    <div>
+                      <input type="checkbox" class="extras" value="30" id="fruta">
+                      <label for="fruta">Fruta - 30€</label>
+                    </div>
                 </li>
               </ul>
 
@@ -126,7 +130,7 @@
                   <ul class="casilla container-fluid m-0">
                     <li class="d-flex gap-3 p-3">
                       <input type="checkbox" id="acepto" name="acepto" value="acepto" required>
-                      <label for="acepto">He leído y acepto la <span>POLÍTICA DE PRIVACIDAD</span></label>
+                      <label for="acepto" id="acepto">He leído y acepto la <span>POLÍTICA DE PRIVACIDAD</span></label>
                     </li>
                   </ul>
                 </li>
@@ -139,15 +143,15 @@
             </form>
           </div>
 
-          <div class="col">
+          <form class="col" id="datosForm" name="datosForm" action="#" method="GET">
             <h4>PRESUPUESTO</h4>
             <div id="presupuesto" class="presupuesto container-fluid p-0">
               <div class="row">
-                <div class="col">Servicio: </div>
-                <div class="col" id="detalle-servicio"></div>
+                <label for="detalle-servicio" class="col">Servicio: </label>
+                <div class="col" type="text" id="detalle-servicio"></div>
               </div>
               <div class="row">
-                <div class="col">Extras: </div>
+                <label for="detalle-extras" class="col">Extras: </label>
                 <div class="col" id="detalle-extras"></div>
               </div>
               <div class="row">
@@ -171,7 +175,7 @@
                   se aplican descuentos</div>
               </div>
             </div>
-          </div>
+          </form>
         </div>
       </div>
 

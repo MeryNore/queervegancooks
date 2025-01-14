@@ -42,6 +42,11 @@ function validar () {
         mensaje = mensaje + 'El campo de email debe ser en formato algo@algo.algo\n';
     }
 
+    const chekcboxk = document.getElementById('acepto')
+    if (!chekcboxk.checked){
+        valido = false;
+        mensaje = mensaje + "Debe aceptar la POLÍTICA DE PRIVACIDAD"
+    }
 
     //si todo está ok, enviará el formulario
     if (valido){

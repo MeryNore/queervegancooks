@@ -142,7 +142,7 @@ p{
     margin-bottom: 15px;
 }
 
-.formList label:not(:last-child){
+.formList label:not([id="acepto"]){
     font-weight: 300;
     letter-spacing: .09em;
     text-transform: uppercase;
@@ -161,8 +161,12 @@ p{
     width: max-content;
 }
 
-.casilla input{
+.extras{
     accent-color: #41ab33;
+}
+
+.extraslab{
+    width: 500px;
 }
 
 .casilla span{
