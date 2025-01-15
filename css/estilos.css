@@ -206,6 +206,20 @@ p{
     }
 }
 
+@media (min-width: 576px) {
+    .mapa{
+        width:700px;
+        height:600px;
+    }
+}
+
+@media (max-width: 575px) {
+    .mapa{
+        width:500px;
+        height: 600px;
+    }
+}
+
 #contacto h2{
     color: #41ab33;
     box-shadow: 2px 2px #41ab33;
@@ -214,9 +228,8 @@ p{
 .mapa{
     box-shadow: -2px -2px #41ab33;
     border: 1px solid black;
-    width:700px;
-    height:600px;
 }
+
 
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
 *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
