@@ -22,8 +22,8 @@
 <body>
   <header>
     <!-- BARRA DE NAVEGACIÓN -->
-    <nav class="navbar navbar-expand-lg bg-black p-0 m-0 position-fixed fixed-top" data-bs-theme="dark">
-      <div class="container-fluid p-0">
+    <div class="container-fluid p-0">
+      <nav class="navbar navbar-expand-lg bg-black p-0 m-0 position-fixed fixed-top" data-bs-theme="dark">
         <a class="navbar-brand px-4" href="#">
           <img class="logo" src="./assets/img/QVC.jpg" alt="logo">
           <span class="logo">Queer Vegan Cooks</span>
@@ -48,22 +48,19 @@
             </li>
           </ul>
         </div>
-      </div>
-    </nav>
+      </nav>
+    </div>
   </header>
-
 
   <main>
     <!-- CONTENIDO PÁGINA DE INICIO -->
     <div class="container-fluid p-0 m-0">
 
       <!-- SECCIÓN 1 PRESENTACIÓN-->
-      <section class="row m-5 text-center">
-        <h1 class="pb-4">VEGANAS IMPERFECTAS</h1>
-
-        <div class="row gap-4 justify-content-center align-items-center">
-
-          <div class="col-sm-12 col-lg-6">
+      <section class="m-5 text-center">
+        <h1 class="p-4">VEGANAS IMPERFECTAS</h1>
+        <div class="d-flex flex-wrap flex-lg-nowrap gap-5 w-75 m-auto justify-content-center">
+          <div class="align-self-center">
             <p>Hola querida vegana imperfecta, así es como nos definimos nosotras. Somos dos chicas de 29 y 31 años, de
               Cantabria y Asturias, amantes de la naturaleza, los animales y la buena comida sin maltrato. Hace unos
               meses nos creamos nuestro Instagram que, para nosotras, sería un diario y una forma de enseñar a nuestros
@@ -73,25 +70,20 @@
               que no cometas los mismos errores que todes cometemos cuando no estamos informades. Gracias por leernos y
               por seguirnos.</p>
           </div>
-
-          <div class="col-lg-4">
+          <div>
             <img id="ig" src="./assets/img/IG.jpg" alt="instagram">
           </div>
-
         </div>
       </section>
 
       <!-- SECCIÓN 2 EL VEGANISMO-->
-      <section class="row p-5 text-center bg-warning-subtle">
+      <section class="p-5 text-center bg-warning-subtle">
         <h2 class="pb-5">EL VEGANISMO</h2>
-
-        <div class="row gap-4 justify-content-center align-items-center">
-
-          <div class="col-lg-6">
+        <div class="d-flex flex-column">
+          <div>
             <img id="veganismo" src="./assets/img/veganismo.png" alt="foto de animales">
           </div>
-
-          <div class="col-sm-12 col-lg-8">
+          <div>
             <p>Para nosotras el veganismo, lejos de ser una dieta, es una forma de vida, coherente y honesta con el
               planeta y los seres que contiene. Luchamos por los derechos de los animales, porque creemos que también
               los merecen, abogamos porque tengan derecho a no ser tratados como seres inferiores, que sepamos que no
@@ -110,12 +102,11 @@
               curiosidad llega a crecer tanto que a día de hoy nosotras conocemos más verduras y cereales de los que
               creíamos que existían, y muchos de ellos super nutritivos.</p>
           </div>
-
         </div>
       </section>
 
       <!-- SECCIÓN 3 CAROUSEL -->
-      <section class="row m-5 text-center d-block">
+      <section class="m-5 text-center d-block">
 
         <div class="container w-75">
           <div id="carouselExampleIndicators" class="carousel slide">
@@ -198,19 +189,18 @@
             Una de las cosas que más nos gusta es, veganizar recetas tradicionales, hacer que esos platos de toda la
             vida sigan en la mesa sin necesidad de ningún maltrato animal.</p>
         </div>
-
       </section>
 
       <!-- SECCIÓN DATOS JSON -->
-      <section class="news row p-4 bg-secondary">
-        <h2 class="text-center mb-5">FoodClassification</h2>
-
-        <div id="vegetarian" class="container col-6">
-          <h4>Vegetarian</h4>
-        </div>
-
-        <div id="vegan" class="container col-6">
-          <h4>Vegan</h4>
+      <section class="news p-4 bg-secondary">
+        <h2 class="text-center">FoodClassification</h2>
+        <div class="d-flex gap-4">
+          <div id="vegetarian">
+            <h4>Vegetarian</h4>
+          </div>
+          <div id="vegan">
+            <h4>Vegan</h4>
+          </div>
         </div>
       </section>
 
@@ -221,8 +211,8 @@
   <footer>
     <!-- PIE DE PÁGINA -->
     <div class="container-fluid py-4 bg-black" data-bs-theme="dark">
-      <div id="sectionborder" class="container-fluid d-flex flex-wrap justify-content-center  py-3 mx-4">
-        <div class="col-xs-12 col-sm-12 col-lg-6 text-center">
+      <div id="sectionborder" class="d-flex flex-wrap justify-content-center align-items-center py-3 mx-4">
+        <div class="col-xs-12 col-sm-12 col-lg-6 d-flex justify-content-center">
           <a href="https://es.wikipedia.org/wiki/Copyright" target="_blank"
             class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
             <i class="fa-regular fa-copyright"></i>
@@ -230,12 +220,12 @@
           <span class="mb-3 mb-md-0 text-body">Todos los derechos reservados 2024 Company, Inc</span>
         </div>
 
-        <div class="col-12 col-lg-6 text-center">
+        <div class="col-12 col-lg-6 d-flex flex-wrap justify-content-center">
           <span class="mb-3 mb-md-0 text-body justify-content-end">Queer Vegan Cooks - C/ Vargas, 17 - Santander -
             Cantabria</span>
         </div>
 
-        <ul class="nav list-unstyled align-items-center my-2">
+        <ul class="nav list-unstyled d-flex justify-content-center my-2">
           <li class="ms-3"><a class="text-body" href="https://www.instagram.com/queervegancooks_/" target="_blank"><i
                 class="icons fa-brands fa-instagram fa-2xl"></i></a></li>
           <li class="ms-3"><a class="text-body" href="https://mail.google.com/" target="_blank"><i

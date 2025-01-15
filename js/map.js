@@ -20,7 +20,7 @@ function initMap() {
     });
 
     //Creamos la marca donde mostraremos nuestros datos y el contenido
-    const contenidomarca = '<h5>Queer Vegan Cooks</h5><br>C/Vargas, 17 - Santander<br>Tfno: 942 000 000<br>Email: queervegancooks@gmail.com'
+    const contenidomarca = '<h5>Queer Vegan Cooks</h5><br>C/Vargas, 17<br>C.P. 39010 - Santander (Cantabria)<br>Tfno: 942 000 000<br>Email: queervegancooks@gmail.com'
     const infomarca = new google.maps.InfoWindow({
         content: contenidomarca
     })
