@@ -63,20 +63,20 @@ p{
     font-size: 3.4rem;
     vertical-align: middle;
     color: #41ab33;
-    width: 89px;
-    height: 81px;
+    width: 5.5rem;
+    height: 5rem;
 }
 
 @media (max-width: 661px){
     .logo{
         font-size: 1.7rem;
-        width: 49px;
-        height: 41px;
+        width: 3rem;
+        height: 2.5rem;
     }
 }
 
 #navbarNav{
-    line-height: 80px;
+    line-height: 5rem;
 }
 
 .nav-item:hover{
@@ -95,19 +95,19 @@ p{
 *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
 
 #ig{
-    width: 469px;
-    height: 413px;
+    width: 29.3rem;
+    height: 25.8rem;
     border-radius: 10px;
 }
 
 #veganismo{
-    width: 400px;
-    height: 400px;
+    width: 25rem;
+    height: 25rem;
 }
 
 .carousel-item img{
     object-fit: cover;
-    height: 500px;
+    height: 31.25rem;
 }
 
 .news{
@@ -124,8 +124,8 @@ p{
 .example-image{
     object-fit: cover;
     border-radius: 20px;
-    width: 175px;
-    height: 225px;
+    width: 10.9rem;
+    height: 14rem;
 }
 
 .galeria{
@@ -152,7 +152,7 @@ p{
     font-weight: 300;
     letter-spacing: .09em;
     text-transform: uppercase;
-    width: 140px;
+    width: 8.75rem;
 }
 
 .formList input:not([type="checkbox"]), .formList select{
@@ -181,7 +181,7 @@ p{
     border: none;
     background-color: #41ab33;
     color: antiquewhite;
-    font-size: 16px;
+    font-size: 1rem;
     letter-spacing: 0.09em;
     border-radius: 20px;
 }
@@ -213,15 +213,15 @@ p{
 
 @media (min-width: 576px) {
     .mapa{
-        width:700px;
-        height:600px;
+        width: 43.75rem;
+        height: 37.5rem;
     }
 }
 
 @media (max-width: 575px) {
     .mapa{
-        width:400px;
-        height: 600px;
+        width: 25rem;
+        height: 37.5rem;
     }
 }
 
