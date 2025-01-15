@@ -54,128 +54,118 @@
 
   <main>
     <!-- CONTENIDO PÁGINA PRESUPUESTOS -->
-    <section class="p-4">
-      <h2 class="pb-5 text-center">SOLICITA TU PRESUPUESTO</h2>
-      <!-- formulario -->
-      <div class="form container-fluid">
-        <div class="row">
-          <div class="form col-lg-8">
-            <form id="datosForm" name="datosForm" action="#" method="GET">
-              <!-- lista datos de contacto -->
-              <h4>DATOS DE CONTACTO</h4>
-              <ul id="dataList" class="formList p-0">
-                <li>
-                  <label for="nombre">NOMBRE</label>
-                  <input type="text" id="nombre" name="nombre" placeholder="Escribe tu nombre"
-                    title="Escribe solo letras (max 15)" required>
-                </li>
-                <li>
-                  <label for="apellido">APELLIDO</label>
-                  <input type="text" id="apellido" name="apellido" placeholder="Escribe tu apellido"
-                    title="Escribe solo letras (max 40)" required>
-                </li>
-                <li>
-                  <label for="telefono">TELÉFONO</label>
-                  <input type="tel" id="telefono" name="telefono" placeholder="Escribe tu número de teléfono"
-                    title="Escribe un número de 9 dígitos" required>
-                </li>
-                <li>
-                  <label for="email">EMAIL</label>
-                  <input type="email" id="email" name="email" placeholder="Escribe tu dirección de correo"
-                    title="correo@correo.com" required>
-                </li>
-              </ul>
+    <h2 class="m-4 text-center">SOLICITA TU PRESUPUESTO</h2>
 
-              <!-- lista servicios -->
-              <h4>SERVICIOS</h4>
-              <ul class="formList p-0">
-                <li>
-                  <label for="servicio">SERVICIOS</label>
-                  <select name="servicio" id="servicio">
-                    <option value="200">Event Catering - 200€</option>
-                    <option value="300">Christmas Catering - 300€</option>
-                    <option value="100">Dinner Catering - 100€</option>
-                    <option value="500">Day Catering - 500€</option>
-                    <option value="1200">Full Weekend Catering 1.200€</option>
-                  </select>
-                </li>
-                <li>
-                  <label for="comensales">Nº COMENSALES</label>
-                  <input type="number" id="comensales" min="1">
-                </li>
-                <li class="casilla extras">
-                  <label>EXTRAS</label>
-                  <div>
-                    <label><input type="checkbox" class="extras" value="50"> Natural Drinks - 50€</label>
-                  </div>
-                  <div>
-                    <label><input type="checkbox" class="extras" value="150"> Kombuchas - 150€</label>
-                  </div>
-                  <div>
-                    <label><input type="checkbox" class="extras" value="100"> Tabla Quesos Veganos - 100€</label>
-                  </div>
-                  <div>
-                    <label><input type="checkbox" class="extras" value="30"> Fruta - 30€</label>
-                  </div>
-                </li>
-              </ul>
-
-              <!-- lista casilla política de privacidad y botones -->
-              <ul class="formList p-0">
-                <li>
-                  <ul class="casilla container-fluid m-0">
-                    <li class="d-flex gap-3 p-3">
-                      <input type="checkbox" id="acepto" name="acepto" value="acepto" required>
-                      <label for="acepto">He leído y acepto la <span>POLÍTICA DE PRIVACIDAD</span></label>
-                    </li>
-                  </ul>
-                </li>
-                <!-- botonés envío y borrar -->
-                <li class="liButton container-fluid d-flex text-center gap-3">
-                  <button type="reset" name="boton de borrado">BORRAR</button>
-                  <button id="sendButton" type="submit" name="boton de enviar">ENVIAR</button>
-                </li>
-              </ul>
-            </form>
-          </div>
-
-          <div class="col">
-            <h4>PRESUPUESTO</h4>
-            <div id="presupuesto" class="presupuesto container-fluid p-0">
-              <div class="row">
-                <div class="col">Servicio: </div>
-                <div class="col" id="detalle-servicio"></div>
-              </div>
-              <div class="row">
-                <div class="col">Extras: </div>
-                <div class="col" id="detalle-extras"></div>
-              </div>
-              <div class="row">
-                <div class="col">Comensales: </div>
-                <div class="col" id="detalle-comensales"></div>
-              </div>
-              <div class="row">
-                <div class="col">Precio Inicial: </div>
-                <div class="col" id="detalle-inicial"></div>
-              </div>
-              <div class="row">
-                <div class="col">Descuento aplicado*: </div>
-                <div class="col" id="detalle-descuento"></div>
-              </div>
-              <div class="row">
-                <div class="col">Presupuesto Final: </div>
-                <div class="col" id="detalle-total"></div>
-              </div>
-              <div class="row w-75">
-                <div class="col clausulas">*Descuento aplicado únicamente sobre el precio del servicio. En los extras no
-                  se aplican descuentos</div>
-              </div>
+    <!-- FORMULARIO -->
+    <div class="form container-fluid d-flex flex-column">
+      <form id="datosForm" name="datosForm" action="#" method="GET">
+        <!-- DATOS DE CONTACTO -->
+        <h4>DATOS DE CONTACTO</h4>
+        <ul id="dataList" class="formList p-0">
+          <li>
+            <label for="nombre">NOMBRE</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Escribe tu nombre"
+              title="Escribe solo letras (max 15)" required>
+          </li>
+          <li>
+            <label for="apellido">APELLIDO</label>
+            <input type="text" id="apellido" name="apellido" placeholder="Escribe tu apellido"
+              title="Escribe solo letras (max 40)" required>
+          </li>
+          <li>
+            <label for="telefono">TELÉFONO</label>
+            <input type="tel" id="telefono" name="telefono" placeholder="Escribe tu número de teléfono"
+              title="Escribe un número de 9 dígitos" required>
+          </li>
+          <li>
+            <label for="email">EMAIL</label>
+            <input type="email" id="email" name="email" placeholder="Escribe tu dirección de correo"
+              title="correo@correo.com" required>
+          </li>
+        </ul>
+        <!-- SELECCIÓN DE SERVICIOS -->
+        <h4>SERVICIOS</h4>
+        <ul class="formList p-0">
+          <li>
+            <label for="servicio">SERVICIOS</label>
+            <select name="servicio" id="servicio">
+              <option value="200">Event Catering - 200€</option>
+              <option value="300">Christmas Catering - 300€</option>
+              <option value="100">Dinner Catering - 100€</option>
+              <option value="500">Day Catering - 500€</option>
+              <option value="1200">Full Weekend Catering 1.200€</option>
+            </select>
+          </li>
+          <li>
+            <label for="comensales">Nº COMENSALES</label>
+            <input type="number" name="comensales" id="comensales">
+          </li>
+          <li class="casilla extras">
+            <label>EXTRAS</label>
+            <div>
+              <label><input type="checkbox" class="extras" value="50"> Natural Drinks - 50€</label>
             </div>
-          </div>
+            <div>
+              <label><input type="checkbox" class="extras" value="150"> Kombuchas - 150€</label>
+            </div>
+            <div>
+              <label><input type="checkbox" class="extras" value="100"> Tabla Quesos Veganos - 100€</label>
+            </div>
+            <div>
+              <label><input type="checkbox" class="extras" value="30"> Fruta - 30€</label>
+            </div>
+          </li>
+          <!-- POLITICA DE PRIVACIDA  -->
+          <li>
+            <input type="checkbox" id="acepto" name="acepto" value="acepto" required>
+            <label for="acepto">He leído y acepto la <span>POLÍTICA DE PRIVACIDAD</span></label>
+          </li>
+          <!-- BOTONES -->
+          <li class="liButton container-fluid d-flex text-center gap-3">
+            <button type="reset" name="boton de borrado">BORRAR</button>
+            <button id="sendButton" type="submit" name="boton de enviar">ENVIAR</button>
+          </li>
+        </ul>
+      </form>
+    </div>
+
+    <!-- PTO FINAL -->
+    <div class="col">
+      <h4>PRESUPUESTO</h4>
+      <div id="presupuesto" class="presupuesto container-fluid p-0">
+        <div class="row">
+          <div class="col">Servicio: </div>
+          <div class="col" id="detalle-servicio"></div>
+        </div>
+        <div class="row">
+          <div class="col">Extras: </div>
+          <div class="col" id="detalle-extras"></div>
+        </div>
+        <div class="row">
+          <div class="col">Comensales: </div>
+          <div class="col" id="detalle-comensales"></div>
+        </div>
+        <div class="row">
+          <div class="col">Precio Inicial: </div>
+          <div class="col" id="detalle-inicial"></div>
+        </div>
+        <div class="row">
+          <div class="col">Descuento aplicado*: </div>
+          <div class="col" id="detalle-descuento"></div>
+        </div>
+        <div class="row">
+          <div class="col">Presupuesto Final: </div>
+          <div class="col" id="detalle-total"></div>
+        </div>
+        <div class="row w-75">
+          <div class="col clausulas">*Descuento aplicado únicamente sobre el precio del servicio. En los extras no
+            se aplican descuentos</div>
         </div>
       </div>
+    </div>
+    </div>
+    </div>
 
-    </section>
   </main>
 
   <footer>
