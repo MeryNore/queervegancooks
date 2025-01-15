@@ -37,16 +37,16 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" href="../index.html">INICIO</a>
+              <a class="nav-link p-2" href="../index.html">INICIO</a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link active" aria-current="page" href="#">GALERÍA</a>
+              <a class="nav-link active p-2" aria-current="page" href="#">GALERÍA</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../views/presupuestos.html">PRESUPUESTOS</a>
+              <a class="nav-link p-2" href="../views/presupuestos.html">PRESUPUESTOS</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../views/contacto.html">CONTACTO</a>
+              <a class="nav-link p-2" href="../views/contacto.html">CONTACTO</a>
             </li>
           </ul>
         </div>
@@ -56,12 +56,13 @@
 
   <main>
     <!--CONTENIDO GALERÍA-->
-    <section class="container-fluid text-center">
-      <h2 class="py-4">RECETAS</h2>
+    <div class="container-fluid p-0 m-0">
+      <section>
+        <h2 class="py-4 text-center">RECETAS</h2>
 
-      <div class="container pb-5">
-        <div class="row justify-content-center">
-          <div class="col-8">
+        <!-- FOTOS -->
+        <div class="container pb-5 d-flex justify-content-center">
+          <div class="galeria d-flex flex-wrap gap-2 justify-content-center">
             <a class="example-image-link" href="../assets/img/1.JPG" data-lightbox="example-set"
               data-title="Coliflor con pesto de anacardos, tomatitos y cebolla asada"><img class="example-image"
                 src="../assets/img/1.1.jpg" alt="foto1"></a>
@@ -95,30 +96,32 @@
               data-title="Corazón de tomate"><img class="example-image" src="../assets/img/12.1.jpg" alt="foto12"></a>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   </main>
 
   <footer>
     <!-- PIE DE PÁGINA -->
     <div class="container-fluid py-4 bg-black" data-bs-theme="dark">
-      <div id="sectionborder" class="d-flex flex-wrap justify-content-center align-items-center py-3 mx-4">
-        <div class="col-xs-12 col-sm-12 col-lg-6 d-flex justify-content-center">
-          <a href="https://es.wikipedia.org/wiki/Copyright" target="_blank" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
+      <div id="sectionborder" class="container-fluid d-flex flex-wrap justify-content-center  py-3 mx-4">
+        <div class="col-xs-12 col-sm-12 col-lg-6 text-center">
+          <a href="https://es.wikipedia.org/wiki/Copyright" target="_blank"
+            class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
             <i class="fa-regular fa-copyright"></i>
           </a>
           <span class="mb-3 mb-md-0 text-body">Todos los derechos reservados 2024 Company, Inc</span>
         </div>
 
-        <div class="col-12 col-lg-6 d-flex flex-wrap justify-content-center">
-          <span class="mb-3 mb-md-0 text-body justify-content-end">Queer Vegan Cooks - C/ Vargas, 17 - Santander - Cantabria</span>
+        <div class="col-12 col-lg-6 text-center">
+          <span class="mb-3 mb-md-0 text-body justify-content-end">Queer Vegan Cooks - C/ Vargas, 17 - Santander -
+            Cantabria</span>
         </div>
 
-        <ul class="nav list-unstyled d-flex justify-content-center my-2">
+        <ul class="nav list-unstyled align-items-center my-2">
           <li class="ms-3"><a class="text-body" href="https://www.instagram.com/queervegancooks_/" target="_blank"><i
-            class="icons fa-brands fa-instagram fa-2xl"></i></a></li>
+                class="icons fa-brands fa-instagram fa-2xl"></i></a></li>
           <li class="ms-3"><a class="text-body" href="https://mail.google.com/" target="_blank"><i
-            class="icons fa-solid fa-envelope fa-2xl"></i></a></li>
+                class="icons fa-solid fa-envelope fa-2xl"></i></a></li>
         </ul>
       </div>
     </div>
