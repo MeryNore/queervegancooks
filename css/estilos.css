@@ -6,15 +6,16 @@
 *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-* //ESTILOS GENERALES // -*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
 *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
 *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
-*{
+html{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    min-height: 100vh; 
 }
+
 
 body{
     padding-top: 96px;
-    min-height: 100vh;
     margin: 0 auto;
     color:black;
     background-color: white;
@@ -65,7 +66,7 @@ p{
     height: 81px;
 }
 
-@media (max-width: 576px){
+@media (max-width: 661px){
     .logo{
         font-size: 1.7rem;
         width: 49px;
