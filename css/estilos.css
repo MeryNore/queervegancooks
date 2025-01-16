@@ -13,7 +13,8 @@
 }
 
 body{
-    min-height: 100vh;
+    width: 100%;
+    height: 100vh;
     padding-top: 96px;
     font-size: 1rem;
     background-color: white;
@@ -134,40 +135,48 @@ p{
 *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
 *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
 
+form ul{
+    padding: 0;
+}
 
-.form h4{
+form h4, .presupuesto h4{
     color: #41ab33;
 }
 
-.formList li{
+form li{
+    display: flex;
+    align-items: center;
+    gap: 10px;
     list-style: none;
     margin-bottom: 15px;
 }
 
-.formList label:not(:last-child){
+form label:not(.checkbox-label){
     font-weight: 300;
     letter-spacing: .09em;
     text-transform: uppercase;
-    width: 8.75rem;
+    width: 9rem;
+    flex-shrink: 0;
 }
 
-.formList input:not([type="checkbox"]), .formList select{
+form input:not([type="checkbox"]), form select{
     border: none;
     border-radius: 15px;
     padding: 10px;
-    width: 75%;
+    background-color: white;
+    flex: 1;
 }
 
-.casilla li{
-    border: 1px solid rgb(66, 173, 52);
-    width: max-content;
-}
-
-.casilla input{
+form input[type="checkbox"]{
     accent-color: #41ab33;
 }
 
-.casilla span{
+.lipriv{
+    border: 1px solid #42ad34;
+    width: max-content;
+}
+
+.lipriv span{
     color:#41ab33;
     font-weight: bold;
 }
@@ -177,7 +186,6 @@ p{
     border: none;
     background-color: #41ab33;
     color: antiquewhite;
-    font-size: 1rem;
     letter-spacing: 0.09em;
     border-radius: 20px;
 }
@@ -187,11 +195,13 @@ p{
 }
 
 .presupuesto{
-    font-size: large;
+    font-weight: 300;
+    letter-spacing: .09em;
+    text-transform: uppercase;
 }
 
 .clausulas{
-    font-size: smaller;
+    font-size: 0.6rem;
     color: grey;
 }
 

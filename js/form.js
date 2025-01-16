@@ -1,5 +1,5 @@
 // datos del formulario y del botón de envío
-const form = document.getElementById('datosForm');
+const form = document.getElementById('form');
 const boton = document.getElementById('sendButton')
 
 boton.addEventListener('click', (e) => {
