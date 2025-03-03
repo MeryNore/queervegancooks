@@ -1,0 +1,4 @@
+<Files ".env.php">
+    require all denied
+</Files>
+

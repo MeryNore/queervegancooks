@@ -1,0 +1,281 @@
+/* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> INCICIO DEL DOCUMENTO CSS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< */
+
+
+/*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-* //ESTILOS GENERALES // -*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    padding-top: 6rem;
+    font-weight: 300;
+    letter-spacing: .09em;
+    color: inherit;
+    font-size: 1rem !important;
+    background-color: white;
+    display: grid;
+    grid-template-areas:
+    "my-header"
+    "my-main"
+    "my-footer";
+    grid-template-rows: auto 1fr auto;
+}
+
+header{
+    grid-area: my-header;
+}
+
+main{
+    grid-area: my-main;
+}
+
+footer{
+    grid-area: my-footer;
+}
+
+/* Modificamos el comportamiento de los enlaces */
+a, a:visited{
+    text-decoration: none !important;
+}
+
+/* Añadimos la configuración de los parrafos */
+p{
+    line-height: 30px;
+    text-align: justify;
+}
+
+/*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+*-*-*-*-*-*-*-*-*-*-*-*-* // ESTILOS BARRA DE NAVEGACIÓN // -*-*-*-*-*-*-*-*-*-*-*-*-*-
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
+
+.logo{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-style: normal;
+    font-size: 3.4rem;
+    vertical-align: middle;
+    width: 5.5rem;
+    height: 5rem;
+    font-weight: 300;
+    letter-spacing: .09em;
+    color: inherit;
+}
+
+@media (max-width: 661px){
+    .logo{
+        font-size: 1.7rem;
+        width: 3rem;
+        height: 2.5rem;
+    }
+}
+
+.nav-link{
+    color: white !important;
+}
+
+.nav-link i{
+    margin-right: 5px !important;
+}
+.nav-item>a:hover{
+    color: #41ab33;
+}
+
+.active{
+    color:#41ab33 !important;
+}
+
+
+/*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-* // ESTILOS INDEX// -*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
+
+#ig{
+    width: 29.3rem;
+    height: 25.8rem;
+    border-radius: 10px;
+}
+
+#veganismo{
+    width: 25rem;
+    height: 25rem;
+}
+
+.carousel-item img{
+    object-fit: cover;
+    height: 31.25rem;
+}
+
+.news{
+    text-align: justify;
+    color: white;
+}
+
+/*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+*-*-*-*-*-*-*-*-*--*-*-*-*-*-* //ESTILOS FORMULARIOS // -*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
+
+form{
+    width: 40rem;
+}
+
+form li{
+    list-style: none;
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+form label, form input, form select, form a, form textarea{
+    font-weight: 300;
+    letter-spacing: .09em;
+    color: inherit;
+}
+
+form input:not([type="checkbox"]):not([type="reset"]):not([type="submit"]), form select, form textarea{
+    margin-top: 5px;
+    border: 1px solid #41ab33;
+    border-radius: 15px;
+    padding: 12px;
+    background-color: white;
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .lipriv{
+        display: inline-block;
+    }
+}
+
+@media (max-width: 768px) {
+    form{
+        width: 32rem;
+    }
+
+    .lipriv{
+        display: flex;
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 576px) {   
+    form{
+        width: 25rem;
+    }
+}
+
+@media (max-width: 480px) {   
+    form{
+        width: 20rem;
+    }
+    .lipriv{
+        font-size: small;
+    }
+}
+
+form input[type="checkbox"]{
+    accent-color: #41ab33;
+}
+
+.lipriv{
+    border: 1px solid #41ab33;
+    padding: 20px;
+    width: max-content;
+}
+
+.lipriv span, .liButton span{
+    color:#41ab33;
+    font-weight: bold;
+}
+
+.liButton{
+    display: inline-block;
+    text-align: center;
+}
+
+.liButton input{
+    padding: 10px 60px;
+    margin: 1rem;
+    border: none;
+    background-color: #41ab33;
+    color: antiquewhite;
+    letter-spacing: 0.09em;
+    border-radius: 20px;
+}
+
+.liButton input:hover{
+    color: black;
+}
+
+.input_error{
+    visibility: hidden;
+}
+
+small{
+    font-size: 0.8rem !important;
+}
+
+
+/*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-* // ESTILOS NOTICIAS// -*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
+
+.card{
+    width: 100%;
+    max-width: 20rem;
+    max-height: 40rem;
+    transition: 0.75s all ease-in-out;
+}
+
+.card:hover{
+    transform: scale(1.1);
+}
+
+.card-body p{
+    display: -webkit-box;
+    line-clamp: 2;
+    -webkit-line-clamp: 6; /* Número de líneas antes de truncar */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.card img{
+    width: 25rem;
+    height: 12.5rem;
+}
+
+/*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-* //ESTILOS FOOTER // -*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
+
+#sectionborder{
+    border-top: solid 1px #41ab33;
+}
+
+/* Estilos de los iconos */
+.icons{
+    color: #41ab33;
+    opacity: 0.5;
+}
+
+.icons:hover{
+    opacity: 1;
+}
+
+/* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> FIN DEL DOCUMENTO CSS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/

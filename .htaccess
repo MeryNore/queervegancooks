@@ -1,0 +1,9 @@
+#Estos archivos se pueden crear tantos como queramos pero siempre dentro de la carpeta donde vayan a tener su función de configuración. 
+
+# El archivo .htaccess que ponenos en la carpeta general suele usarse para
+# - Especificar la ubicación a archivos sensibles
+# - Gestionar prácticas de seguridad relaciondadas con la base de datos
+# - Para añadir rutas relativas a la configuración del proyecto
+# - Para añadir ciertas compativilidades a los servidores
+
+# SON ALTAMENTE UTILIZABLES

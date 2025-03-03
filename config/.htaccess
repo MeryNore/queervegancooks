@@ -1,0 +1,8 @@
+<!-- Con esto evitamos que se pueda acceder al archivo config.php desde un navegador -->
+<Files "config.php">
+    require all denied
+</Files>
+
+<!-- Sentencias de configuración que valen SOLO en APACHE -->
+php_flag display_error on
+php_value error_reporting 32167
