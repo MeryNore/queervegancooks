@@ -67,38 +67,30 @@
             # Inicializamos una variable para guardar los errores de excepcion posibles
             $exception_error = false;
 
-            # Si el regultado de check_user es TRUE (ya existe el usuario)
-            if(check_user($email, $mysqli_connection, $exception_error)){
-                # Establecemos un mensaje de error (variable de sesión)
-                $_SESSION['mensaje_error'] = 'ERROR: Ya existe un usuario con ese email.'
-                header('Location: ../../views/views_compartidas/profile.php');
+            # Actualización de los datos del usuario en la base de datos
+            $result_update = updateUserData($idUser, $nombre, $apellido, $email, $telefono, $fecha_nac, $direccion, $sexo, $hashed_password, $mysqli_connection, $exception_error);
+
+            if($result_update){
+                # Actualizar los datos en la sesión tabla USERS_DATA
+                $_SESSION['user_data']['nombre'] = $nombre;
+                $_SESSION['user_data']['apellido'] = $apellido;
+                $_SESSION['user_data']['email'] = $email;
+                $_SESSION['user_data']['telefono'] = $telefono;
+                $_SESSION['user_data']['fecha_nac'] = $fecha_nac;
+                $_SESSION['user_data']['direccion'] = $direccion;
+                $_SESSION['user_data']['sexo'] = $sexo;
+                
+                # Actualizar los datos en la sesión tabla USERS_LOGIN
+                $_SESSION['user_login']['usuario'] = $email;
+
+                
+                $_SESSION['mensaje_exito'] = "¡Los datos se han actualizado correctamente!";
+                header('location: ../../views/views_compartidas/profile.php');
                 exit();
             }else{
-                # Actualización de los datos del usuario en la base de datos
-                $result_update = updateUserData($idUser, $nombre, $apellido, $email, $telefono, $fecha_nac, $direccion, $sexo, $hashed_password, $mysqli_connection, $exception_error);
-
-                if($result_update){
-                    # Actualizar los datos en la sesión tabla USERS_DATA
-                    $_SESSION['user_data']['nombre'] = $nombre;
-                    $_SESSION['user_data']['apellido'] = $apellido;
-                    $_SESSION['user_data']['email'] = $email;
-                    $_SESSION['user_data']['telefono'] = $telefono;
-                    $_SESSION['user_data']['fecha_nac'] = $fecha_nac;
-                    $_SESSION['user_data']['direccion'] = $direccion;
-                    $_SESSION['user_data']['sexo'] = $sexo;
-                    
-                    # Actualizar los datos en la sesión tabla USERS_LOGIN
-                    $_SESSION['user_login']['usuario'] = $email;
-
-                    
-                    $_SESSION['mensaje_exito'] = "¡Los datos se han actualizado correctamente!";
-                    header('location: ../../views/views_compartidas/profile.php');
-                    exit();
-                }else{
-                    $_SESSION['mensaje_error'] = "¡Hubo un error al actualizar los datos!";
-                    header('location: ../../views/views_compartidas/profile.php');
-                    exit();
-                }
+                $_SESSION['mensaje_error'] = "¡Hubo un error al actualizar los datos!";
+                header('location: ../../views/views_compartidas/profile.php');
+                exit();
             }
         }catch(Exception $e){
             error_log("Error durante el proceso de actualización de datos: " . $e -> getMessage());
