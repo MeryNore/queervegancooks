@@ -1,10 +1,4 @@
-<!-- Controlador que gestiona la eliminación de NOTICIAS 
-
-¿Preguntar como eliminar usuarios que ya tienen datos registrados (citas o noticias)?
-
--->
-
-<!-- Controlador que gestiona la eliminación de NOTICIAS -->
+<!-- Controlador que gestiona la eliminación de USUARIOS -->
 
 <?php
 # Vincular los archivos necearios
@@ -33,11 +27,11 @@ if(isset($_GET['borrar_usuario'])){
         $delete_stmt->bind_param('i', $idUser);
 
         if($delete_stmt->execute()){
-            $_SESSION['mensaje_exito'] = "Los datos se han eliminado correctamente";
+            $_SESSION['mensaje_exito'] = "Usuario eliminado correctamente";
             header('location: ../../../views/views_admins/usuarios_admin.php');
             exit();
         }else{
-            $_SESSION['mensaje_error'] = "Hubo un error al eliminar los datos";
+            $_SESSION['mensaje_error'] = "Hubo un error al eliminar el usuario";
             header('location: ../../../views/views_admins/usuarios_admin.php');
             exit();
         }

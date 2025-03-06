@@ -19,26 +19,38 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['editar_noticia'])){
     $texto = htmlspecialchars($_POST["texto_noticia"]);
     $fecha = htmlspecialchars((string)$_POST["fecha_noticia"]); // Convertir a string y sanear
     $idNoticia = htmlspecialchars($_POST['idNoticia']);
+    $foto = $_FILES['imagen_noticia'];
 
-   
+
+    # Obtener el nombre de la imagen actual de la base de datos
+    $query = "SELECT imagen FROM noticias WHERE idNoticia = ?";
+    $stmt = $mysqli_connection->prepare($query);
+    $stmt->bind_param("i", $idNoticia);
+    $stmt->execute();
+    $stmt->bind_result($foto_name);
+    $stmt->fetch();
+    $stmt->close();
+
+
     # Validamos los datos del formulario a travéz de la función validar_registro
-    $errores_validacion = validar_noticias($titulo, $texto, $fecha);
-    # Comprobamos SI se han generado errores de validación (SI el array de validación NO está vacio)
-    if(!empty($errores_validacion)){
-        # SI hay errores de validación, los guardamos en una variable para mostrarselos al usuario
-        $mensaje_error = "";
+    # $errores_validacion = validar_noticias($titulo, $texto, $fecha, $foto, $target_file, $imageFileType);
 
-        # Recorremos el array de errores de validación y los concatenamos en una cadena en la variable mensaje_error
-        foreach($errores_validacion as $clave => $mensaje){
-            $mensaje_error .= $mensaje . '<br>';
+
+    if(!empty($foto) && $foto['error'] == UPLOAD_ERR_OK){
+        # Subir la imagen al servidor
+        $target_dir = "../../../assets/images/uploads/";
+        $target_file = $target_dir . basename($foto["name"]);
+        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+
+        if(move_uploaded_file($foto["tmp_name"], $target_file)) {
+            $foto_name = basename($target_file); // Extraer solo el nombre del archivo
+        } else {
+            $_SESSION['mensaje_error'] = "Lo siento, hubo un error al subir tu archivo.";
+            header('Location: ../../../views/views_admins/noticias_admin.php');
+            exit();
         }
-
-        # Asignamos la cadena de errores a una variable de sesión (La que creamos para los errores $_SESSION['mensaje_error'])
-        $_SESSION['mensaje_error'] = $mensaje_error;
-        # redirigimos al usuario a la página de noticias
-        header('Location: ../../../views/views_admins/noticias_admin.php');
-        exit();
     }
+   
 
     try{
         $exception_error = false;
@@ -50,7 +62,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['editar_noticia'])){
             exit();
         }else{
             # Actualización de los datos en la base de datos
-            $result_update = modificarNoticia($titulo, $texto, $fecha, $idNoticia, $mysqli_connection, $exception_error);
+            $result_update = modificarNoticia($titulo, $foto_name, $texto, $fecha, $idNoticia, $mysqli_connection, $exception_error);
 
             if($result_update){
                 # Actualizar los datos en la sesión en NOTICIAS

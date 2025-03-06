@@ -407,26 +407,27 @@ function check_title($titulo, $mysqli_connection, &$exception_error){
 
 
 # Función para MODIFICAR noticias
-function modificarNoticia($titulo, $texto, $fecha, $idNoticia, $mysqli_connection, &$exception_error) {
+function modificarNoticia($titulo, $foto_name, $texto, $fecha, $idNoticia, $mysqli_connection, &$exception_error) {
 
     # Evitar inyecciones SQL (Convierte todos los posibles caracteres especiales en una cadena de caracteres)
     $titulo = $mysqli_connection -> real_escape_string($titulo);
     $texto = $mysqli_connection -> real_escape_string($texto);
     $fecha = $mysqli_connection -> real_escape_string($fecha);
+    $foto = $mysqli_connection -> real_escape_string($foto_name);
 
     # Inicializar la variable de sentencia
     $update_stmt = null;
 
     try{
         # Preparar la sentencía de actualización
-        $update_stmt = $mysqli_connection->prepare('UPDATE noticias SET titulo = ?, texto = ?, fecha = ? WHERE idNoticia = ?');
+        $update_stmt = $mysqli_connection->prepare('UPDATE noticias SET titulo = ?, imagen = ?, texto = ?, fecha = ? WHERE idNoticia = ?');
 
         if (!$update_stmt) {
             error_log('Error preparando actualización: ' . $mysqli_connection->error);
             return false;
         }else{
              # Vincular los parámetros
-            $update_stmt->bind_param('sssi', $titulo, $texto, $fecha, $idNoticia);
+            $update_stmt->bind_param('ssssi', $titulo, $foto, $texto, $fecha, $idNoticia);
 
             # Ejecutamos la sentencia
             $result_update = $update_stmt -> execute();

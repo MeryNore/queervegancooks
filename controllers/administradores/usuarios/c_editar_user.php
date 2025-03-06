@@ -1,4 +1,4 @@
-<!-- Controlador que gestiona la edición de Noticias -->
+<!-- Controlador que gestiona la edición de USUARIOS -->
 
 <?php
 # Vincular los archivos necearios

@@ -20,6 +20,22 @@ if(isset($_GET['borrar_noticia'])){
     # Intentamos realizar la ELIMINACIÓN de los datos
     try{
         $exception_error = false;
+
+        # Recuperar la ruta de la foto desde la base de datos
+        $select_stmt = $mysqli_connection->prepare('SELECT imagen FROM noticias WHERE idNoticia = ?');
+        $select_stmt->bind_param('i', $idNoticia);
+        $select_stmt->execute();
+        $select_stmt->bind_result($nombre_imagen);
+        $select_stmt->fetch();
+        $select_stmt->close();
+
+        # Construir la ruta completa de la imagen
+        $ruta_imagen = __DIR__ . '/../../../assets/images/uploads/' . $nombre_imagen;
+
+        # Eliminar la foto de la carpeta uploads
+        if(file_exists($ruta_imagen)){
+            unlink($ruta_imagen);
+        }
        
         # eliminar los datos en la base de datos
         $delete_stmt = $mysqli_connection->prepare('DELETE FROM noticias WHERE idNoticia = ?');

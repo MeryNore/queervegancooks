@@ -16,8 +16,15 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['guardar_noticia'])){
     $titulo = htmlspecialchars($_POST["titulo_noticia"]);
     $texto = htmlspecialchars($_POST["texto_noticia"]);
     $fecha = htmlspecialchars((string)$_POST["fecha_noticia"]); // Convertir a string y sanear
+    $foto = $_FILES['imagen_noticia'];
 
+
+    # Subir la imagen al servidor
+    $target_dir = "../../../assets/images/uploads/";
+    $target_file = $target_dir . basename($foto["name"]);
+    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
     
+
     # Recuperar el idUser del usuario de la sesión
     if (!isset($_SESSION['user_login']['idUser'])) {
         $_SESSION['mensaje_error'] = "Error de sesión. Inicia sesión nuevamente.";
@@ -29,7 +36,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['guardar_noticia'])){
 
     
     # Validamos los datos del formulario a travéz de la función validar_registro
-    $errores_validacion = validar_noticias($titulo, $texto, $fecha);
+    $errores_validacion = validar_noticias($titulo, $texto, $fecha, $foto, $target_file, $imageFileType);
     # Comprobamos SI se han generado errores de validación (SI el array de validación NO está vacio)
     if(!empty($errores_validacion)){
         # SI hay errores de validación, los guardamos en una variable para mostrarselos al usuario
@@ -45,7 +52,16 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['guardar_noticia'])){
         # redirigimos al usuario a la página de noticias
         header('Location: ../../../views/views_admins/noticias_admin.php');
         exit();
+    }else{
+        if (move_uploaded_file($foto["tmp_name"], $target_file)) {
+            $foto_name = basename($target_file); // Extraer solo el nombre del archivo
+        } else {
+            $_SESSION['mensaje_error'] = "Lo siento, hubo un error al subir tu archivo.";
+            header('Location: ../../../views/views_admins/noticias_admin.php');
+            exit();
+        }
     }
+
 
     try{
         $insert_stmt = null;
@@ -67,7 +83,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['guardar_noticia'])){
                 exit();
             }else{
                 # Se prepara la sentencia SQL para realizar la inserción de la cita
-                $insert_stmt = $mysqli_connection -> prepare('INSERT INTO noticias (titulo, texto, fecha, idUser) VALUES (?, ?, ?, ?)');
+                $insert_stmt = $mysqli_connection -> prepare('INSERT INTO noticias (titulo, imagen, texto, fecha, idUser) VALUES (?, ?, ?, ?, ?)');
 
                 # SI la sentencia NO se ha podido preparar
                 if(!$insert_stmt){
@@ -80,7 +96,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['guardar_noticia'])){
                 # SI la sentencia se ha podido preparar
                 }else{
                     # Vinculamos los valores instroducidos por el usuario a los valores de la sentancia de inserción
-                    $insert_stmt -> bind_param('sssi', $titulo, $texto, $fecha, $idUser);
+                    $insert_stmt -> bind_param('ssssi', $titulo, $foto_name, $texto, $fecha, $idUser);
 
                     # SI la sentencia se ha podido ejecutar
                     if($insert_stmt -> execute()){
@@ -95,10 +111,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['guardar_noticia'])){
 
                     #SI NO se ha posidio ejecutrar la sentencia
                     }else{
-                        # Se guarda el error de ejecución en el error_log
-                        error_log('Error: ' . $insert_stmt -> error);
-                        # Redirigimos al usuario a la página de error 500
-                        header('Location: ../../../views/errors/error500.html');
+                        $_SESSION['mensaje_error'] = 'ERROR: hubo un problema al guardar la noticia';
+                        header('Location: ../../../views/views_admins/noticias_admin.php');
                         exit();
                     }
                 }

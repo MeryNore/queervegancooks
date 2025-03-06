@@ -84,7 +84,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])){
 
 
                 # Redirigimos al usuaio a la pagina del Perfil
-                header('Location: ../views/views_compartidas/profile.php');
+                header('Location: ../index.php');
                 exit();
 
             }else{

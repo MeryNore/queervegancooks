@@ -141,7 +141,7 @@
                         if ($contador > 5) break;
                         $contador++;?>
                         <div class="card w-100">
-                            <img src="https://picsum.photos/400/20<?php echo $contador ?>/?ramdon" class="card-img-top object-fit-cover w-100" alt="img_ramdon">
+                            <img src="../assets/images/uploads/<?php echo $noticias['imagen']; ?>" class="card-img-top object-fit-cover w-100" alt="........">
                             <div class="card-body">
                                 <h4><strong class="card-title"><?php echo $noticias['titulo']; ?></strong></h4>
                                 <small><?php $fecha = date("d-m-Y", strtotime($noticias['fecha'])); echo $fecha; ?></small>
