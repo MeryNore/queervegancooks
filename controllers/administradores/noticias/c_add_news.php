@@ -36,7 +36,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['guardar_noticia'])){
 
     
     # Validamos los datos del formulario a travéz de la función validar_registro
-    $errores_validacion = validar_noticias($titulo, $texto, $fecha, $foto, $target_file, $imageFileType);
+    $errores_validacion = validar_noticias($titulo, $texto, $fecha, $foto, $imageFileType);
     # Comprobamos SI se han generado errores de validación (SI el array de validación NO está vacio)
     if(!empty($errores_validacion)){
         # SI hay errores de validación, los guardamos en una variable para mostrarselos al usuario

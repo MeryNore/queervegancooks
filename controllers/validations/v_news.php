@@ -9,7 +9,7 @@ define('FECHA_REGEX', '/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/');
 
                       
 # Definimos la función que va a validar los datos del formulario de citas
-function validar_noticias($titulo_noticia, $texto_noticia, $fecha_noticia, $foto, $target_file, $imageFileType){
+function validar_noticias($titulo_noticia, $texto_noticia, $fecha_noticia, $foto, $imageFileType){
     # Declarar un array asociativo que va a contener los errores de validación
     $errores = [];
 
@@ -30,10 +30,15 @@ function validar_noticias($titulo_noticia, $texto_noticia, $fecha_noticia, $foto
     // COMPROBACIONES DE LA FOTO SUBIDA
 
     # Comprobar si el archivo es una imagen real
-    $check = getimagesize($foto["tmp_name"]);
-    if($check == false) {
-        $errores['imagen'] = "El archivo no es una imagen.";
+    if(!empty($foto["tmp_name"])){
+        $check = getimagesize($foto["tmp_name"]);
+        if($check == false) {
+            $errores['imagen'] = "El archivo no es una imagen.";
+        }
+    }else{
+        $errores['imagen'] = "No se ha subido ninguna imagen.";
     }
+    
 
     # Comprobar el tamaño del archivo
     if ($foto["size"] > 60000000) { //60MB

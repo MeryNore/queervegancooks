@@ -33,7 +33,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['editar_noticia'])){
 
 
     # Validamos los datos del formulario a travéz de la función validar_registro
-    # $errores_validacion = validar_noticias($titulo, $texto, $fecha, $foto, $target_file, $imageFileType);
+    # $errores_validacion = validar_noticias($titulo, $texto, $fecha, $foto, $imageFileType);
 
 
     if(!empty($foto) && $foto['error'] == UPLOAD_ERR_OK){

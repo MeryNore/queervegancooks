@@ -145,7 +145,7 @@
                         </li>
                         <li>
                             <label for="imagen_noticia">IMAGEN</label>
-                            <input type="file" id="imagen_noticia" name="imagen_noticia" placeholder="Subir imagen" title="Tamaño máximo 2MB">
+                            <input type="file" id="imagen_noticia" name="imagen_noticia" placeholder="Subir imagen" title="Tamaño máximo 3MB" required>
                             <small class="input_error alert alert-danger p-1 m-0" role="alert"></small>
                         </li>
                         <li>
