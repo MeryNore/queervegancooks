@@ -16,14 +16,15 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['guardar_noticia'])){
     $titulo = htmlspecialchars($_POST["titulo_noticia"]);
     $texto = htmlspecialchars($_POST["texto_noticia"]);
     $fecha = htmlspecialchars((string)$_POST["fecha_noticia"]); // Convertir a string y sanear
-    $foto = $_FILES['imagen_noticia'];
 
-
-    # Subir la imagen al servidor
-    $target_dir = "../../../assets/images/uploads/";
-    $target_file = $target_dir . basename($foto["name"]);
-    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
     
+    // Verificar si se ha subido un archivo
+    if (isset($_FILES['imagen_noticia']) && $_FILES['imagen_noticia']['error'] == UPLOAD_ERR_OK) {
+        $foto = file_get_contents($_FILES['imagen_noticia']['tmp_name']);
+    } else {
+        $foto = null; // O manejar el error de otra manera
+    }
+  
 
     # Recuperar el idUser del usuario de la sesión
     if (!isset($_SESSION['user_login']['idUser'])) {
@@ -36,7 +37,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['guardar_noticia'])){
 
     
     # Validamos los datos del formulario a travéz de la función validar_registro
-    $errores_validacion = validar_noticias($titulo, $texto, $fecha, $foto, $imageFileType);
+    $errores_validacion = validar_noticias($titulo, $texto, $fecha);
     # Comprobamos SI se han generado errores de validación (SI el array de validación NO está vacio)
     if(!empty($errores_validacion)){
         # SI hay errores de validación, los guardamos en una variable para mostrarselos al usuario
@@ -52,14 +53,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['guardar_noticia'])){
         # redirigimos al usuario a la página de noticias
         header('Location: ../../../views/views_admins/noticias_admin.php');
         exit();
-    }else{
-        if (move_uploaded_file($foto["tmp_name"], $target_file)) {
-            $foto_name = basename($target_file); // Extraer solo el nombre del archivo
-        } else {
-            $_SESSION['mensaje_error'] = "Lo siento, hubo un error al subir tu archivo.";
-            header('Location: ../../../views/views_admins/noticias_admin.php');
-            exit();
-        }
     }
 
 
@@ -96,7 +89,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['guardar_noticia'])){
                 # SI la sentencia se ha podido preparar
                 }else{
                     # Vinculamos los valores instroducidos por el usuario a los valores de la sentancia de inserción
-                    $insert_stmt -> bind_param('ssssi', $titulo, $foto_name, $texto, $fecha, $idUser);
+                    $insert_stmt -> bind_param('ssssi', $titulo, $foto, $texto, $fecha, $idUser);
 
                     # SI la sentencia se ha podido ejecutar
                     if($insert_stmt -> execute()){

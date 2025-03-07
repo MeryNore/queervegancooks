@@ -150,8 +150,9 @@
                         </li>
                         <li>
                             <label for="imagen_noticia">IMAGEN</label>
-                            <input type="file" id="imagen_noticia" name="imagen_noticia" value="<?php echo $noticias['imagen'] ?>" title="Tamaño máximo 2MB">
-                            <small class="input_error alert alert-danger p-1 m-0" role="alert"></small>
+                            <?php $imagenBase64 = base64_encode($noticias['imagen']); ?>
+                            <img src="data:image/jpeg;base64,<?php echo $imagenBase64; ?>" alt="imagen_noticia" width="150" height="100">
+                            <input type="file" id="imagen_noticia" name="imagen_noticia" title="Tamaño máximo 3MB">
                         </li>
                         <li>
                             <label for="texto_noticia">TEXTO NOTICIA</label>

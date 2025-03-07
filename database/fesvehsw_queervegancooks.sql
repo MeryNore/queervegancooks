@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 06-03-2025 a las 14:09:04
+-- Tiempo de generación: 07-03-2025 a las 07:18:18
 -- Versión del servidor: 10.6.16-MariaDB-cll-lve
 -- Versión de PHP: 7.4.33
 
@@ -50,7 +50,7 @@ DROP TABLE IF EXISTS `noticias`;
 CREATE TABLE IF NOT EXISTS `noticias` (
   `idNoticia` int(11) NOT NULL AUTO_INCREMENT,
   `titulo` varchar(200) NOT NULL,
-  `imagen` varchar(250) NOT NULL,
+  `imagen` longblob NOT NULL,
   `texto` longtext NOT NULL,
   `fecha` date NOT NULL,
   `idUser` int(11) DEFAULT NULL,
@@ -111,7 +111,7 @@ ALTER TABLE `citas`
 -- Filtros para la tabla `noticias`
 --
 ALTER TABLE `noticias`
-  ADD CONSTRAINT `fk_user3` FOREIGN KEY (`idUser`) REFERENCES `users_data` (`idUser`) ON DELETE SET NULL ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_user3` FOREIGN KEY (`idUser`) REFERENCES `users_data` (`idUser`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `users_login`

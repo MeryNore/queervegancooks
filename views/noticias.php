@@ -141,7 +141,8 @@
                         if ($contador > 5) break;
                         $contador++;?>
                         <div class="card w-100">
-                            <img src="../assets/images/uploads/<?php echo $noticias['imagen']; ?>" class="card-img-top object-fit-cover w-100" alt="........">
+                            <?php $imagenBase64 = base64_encode($noticias['imagen']); ?>
+                            <img src="data:image/jpeg;base64,<?php echo $imagenBase64; ?>" class="card-img-top object-fit-cover w-100" alt="imagen_noticia">
                             <div class="card-body">
                                 <h4><strong class="card-title"><?php echo $noticias['titulo']; ?></strong></h4>
                                 <small><?php $fecha = date("d-m-Y", strtotime($noticias['fecha'])); echo $fecha; ?></small>

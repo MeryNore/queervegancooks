@@ -145,8 +145,7 @@
                         </li>
                         <li>
                             <label for="imagen_noticia">IMAGEN</label>
-                            <input type="file" id="imagen_noticia" name="imagen_noticia" placeholder="Subir imagen" title="Tamaño máximo 3MB" required>
-                            <small class="input_error alert alert-danger p-1 m-0" role="alert"></small>
+                            <input type="file" id="imagen_noticia" name="imagen_noticia" title="Tamaño máximo 3MB" required>
                         </li>
                         <li>
                             <label for="texto_noticia">TEXTO NOTICIA</label>
@@ -187,10 +186,15 @@
                             foreach ($noticias as $noticias){?>
                                 <tr>
                                     <td><?php echo $noticias['titulo']; ?></td>
-                                    <td><?php echo $noticias['imagen']; ?></td>
+                                    <td>
+                                        <?php $imagenBase64 = base64_encode($noticias['imagen']); ?>
+                                        <img src="data:image/jpeg;base64,<?php echo $imagenBase64; ?>" alt="imagen_noticia" width="150" height="100">
+                                    </td>
                                     <td><?php echo $noticias['texto']; ?></td>
                                     <td><?php $fecha = date('d-m-Y', strtotime($noticias['fecha'])); echo $fecha; ?></td>
-                                    <td class="text-end"><small class="liButton">
+                                    <!-- BOTONES -->
+                                    <td class="text-end">
+                                        <small class="liButton">
                                             <a href="./noticias_editar.php?idNoticia=<?php echo $noticias['idNoticia']; ?>"><input type="submit" name="editar_noticia" value="EDITAR"></a>
                                             <a href="../../controllers/administradores/noticias/c_eliminar_news.php?borrar_noticia=<?php echo $noticias['idNoticia']; ?>"><input type="submit" name="borrar_noticia" value="BORRAR"></a>
                                         </small>

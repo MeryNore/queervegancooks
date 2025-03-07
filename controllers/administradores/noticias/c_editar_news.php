@@ -19,7 +19,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['editar_noticia'])){
     $texto = htmlspecialchars($_POST["texto_noticia"]);
     $fecha = htmlspecialchars((string)$_POST["fecha_noticia"]); // Convertir a string y sanear
     $idNoticia = htmlspecialchars($_POST['idNoticia']);
-    $foto = $_FILES['imagen_noticia'];
 
 
     # Obtener el nombre de la imagen actual de la base de datos
@@ -33,44 +32,39 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['editar_noticia'])){
 
 
     # Validamos los datos del formulario a travéz de la función validar_registro
-    # $errores_validacion = validar_noticias($titulo, $texto, $fecha, $foto, $imageFileType);
+    # $errores_validacion = validar_noticias($titulo, $texto, $fecha);
 
 
-    if(!empty($foto) && $foto['error'] == UPLOAD_ERR_OK){
-        # Subir la imagen al servidor
-        $target_dir = "../../../assets/images/uploads/";
-        $target_file = $target_dir . basename($foto["name"]);
-        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-
-        if(move_uploaded_file($foto["tmp_name"], $target_file)) {
-            $foto_name = basename($target_file); // Extraer solo el nombre del archivo
-        } else {
-            $_SESSION['mensaje_error'] = "Lo siento, hubo un error al subir tu archivo.";
-            header('Location: ../../../views/views_admins/noticias_admin.php');
-            exit();
-        }
+    // Verificar si se ha subido un archivo
+    if (isset($_FILES['imagen_noticia']) && $_FILES['imagen_noticia']['error'] == UPLOAD_ERR_OK) {
+        $foto = file_get_contents($_FILES['imagen_noticia']['tmp_name']);
+    } else {
+        $foto = $foto_name; // Mantener la imagen existente si no se ha subido una nueva;
     }
-   
+
 
     try{
-        $exception_error = false;
+        # Preparar la sentencía de actualización
+        $update_stmt = $mysqli_connection->prepare('UPDATE noticias SET titulo = ?, imagen = ?, texto = ?, fecha = ? WHERE idNoticia = ?');
 
-        # SI se produjo una excepción durante el proceso de comprobación
-        if($exception_error  == true){
-            # Se redirige al usuario a la página de error 500
-            header('Location: ../../../views/errors/error500.html');
-            exit();
+        if (!$update_stmt) {
+            error_log('Error preparando actualización: ' . $mysqli_connection->error);
+            return false;
         }else{
-            # Actualización de los datos en la base de datos
-            $result_update = modificarNoticia($titulo, $foto_name, $texto, $fecha, $idNoticia, $mysqli_connection, $exception_error);
+             # Vincular los parámetros
+            $update_stmt->bind_param('ssssi', $titulo, $foto, $texto, $fecha, $idNoticia);
 
-            if($result_update){
-                # Actualizar los datos en la sesión en NOTICIAS
+            # Ejecutamos la sentencia
+            if($update_stmt -> execute()){
 
                 $_SESSION['mensaje_exito'] = "¡Los datos se han actualizado correctamente!";
                 header('location: ../../../views/views_admins/noticias_admin.php');
                 exit();
+
+            # SI no se ha podido ejecutar la sentencia
             }else{
+                error_log("Error: No se puede ejecutar la sentencia " . $update_stmt -> error);
+                
                 $_SESSION['mensaje_error'] = "¡Hubo un error al actualizar los datos!";
                 header('location: ../../../views/views_admins/noticias_admin.php');
                 exit();
@@ -78,12 +72,17 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['editar_noticia'])){
         }
 
     }catch(Exception $e){
-        error_log("Error durante el proceso de actualización de datos: " . $e -> getMessage());
-        header("Location: ../../../views/errors/error500.html");
+        error_log("Error en c_editar_news.php: " . $e -> getMessage());
+        # Redirigimos al usuario a la página de error 500
+        header('Location: ../../../views/errors/error500.html');
         exit();
-    
     }finally{
-        # Cerrar la conexión a la base de datos si aún sigue abierta.
+        # Cerrar la sentencia si no lo está
+        if($update_stmt !== null){
+            $update_stmt -> close();
+        }
+
+        # Cerramos la conexión con la BBDD si aún sigue abierta
         if(isset($mysqli_connection) && ($mysqli_connection)){
             $mysqli_connection -> close();
         }

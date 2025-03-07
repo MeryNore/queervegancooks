@@ -194,9 +194,8 @@
                             </select>
                         </li>
                     </ul>
-                    <!-- POLITICA DE PRIVACIDA Y BOTONES  -->
+                    <!-- BOTONES  -->
                     <ul class="container-fluid d-flex flex-column align-items-center pt-4">
-                        <!-- BOTONES -->
                         <li class="liButton">
                             <input type="reset" name="reset" value="BORRAR">
                             <input type="submit" name="guardar_usuario" value="GUARDAR">
